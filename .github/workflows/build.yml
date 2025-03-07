@@ -262,6 +262,12 @@ jobs:
 
           patch -p1 < 50_add_susfs_in_${{ env.SFS_BRANCH }}.patch || true
 
+          # 2. 修复 drivers/kernelsu/ksud.c 中的未使用变量问题
+          echo "Fixing unused variables in drivers/kernelsu/ksud.c..."
+          sed -i '/static struct work_struct stop_vfs_read_work;/d' drivers/kernelsu/ksud.c
+          sed -i '/static struct work_struct stop_execve_hook_work;/d' drivers/kernelsu/ksud.c
+          sed -i '/static struct work_struct stop_input_hook_work;/d' drivers/kernelsu/ksud.c
+
           # Add SUSFS configuration settings
           echo "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo "CONFIG_KSU_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
