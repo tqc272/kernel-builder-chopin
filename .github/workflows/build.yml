@@ -261,15 +261,15 @@ jobs:
           cp ../susfs4ksu/kernel_patches/include/linux/* ./include/linux/
 
           patch -p1 < 50_add_susfs_in_${{ env.SFS_BRANCH }}.patch || true
+          cp ../kernel_patches/69_hide_stuff.patch ./
+          patch -p1 -F 3 < 69_hide_stuff.patch
 
-          # 2. 修复 drivers/kernelsu/ksud.c 中的未使用变量问题
-          echo "Fixing unused variables in drivers/kernelsu/ksud.c..."
-          sed -i '/static struct work_struct stop_vfs_read_work;/d' drivers/kernelsu/ksud.c
-          sed -i '/static struct work_struct stop_execve_hook_work;/d' drivers/kernelsu/ksud.c
-          sed -i '/static struct work_struct stop_input_hook_work;/d' drivers/kernelsu/ksud.c
+          cp ../kernel_patches/hooks/new_hooks.patch ./
+          patch -p1 -F 3 < new_hooks.patch 
 
           # Add SUSFS configuration settings
           echo "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
+          echo "CONFIG_KSU_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo "CONFIG_KSU_WITH_KPROBES=n" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo "CONFIG_KSU_SUSFS=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
