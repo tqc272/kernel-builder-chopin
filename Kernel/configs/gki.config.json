@@ -1,11 +1,11 @@
 [
   {
     "kernelSource": {
-      "name": "android_gki_kernel_5.15_common",
-      "repo": "https://github.com/hfdem/android_gki_kernel_5.15_common",
-      "branch": "android13-5.15-2025-01",
-      "device": "gki",
-      "defconfig": "gki_defconfig"
+      "name": "android_gki_kernel_4.19_common",
+      "repo": "https://github.com/MiCode/Xiaomi_Kernel_OpenSource",
+      "branch": "munch-s-oss",
+      "device": "munch",
+      "defconfig": "munch_user_defconfig"
     },
     "toolchains": [
       {
@@ -38,7 +38,7 @@
     "enableKernelSU": true,
     "KernelSUSFS":{
       "enable": true,
-      "branches": "gki-android13-5.15"
+      "branches": "kernel-4.19"
     }
   }
 ]
