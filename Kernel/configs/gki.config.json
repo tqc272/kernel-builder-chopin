@@ -2,8 +2,8 @@
   {
     "kernelSource": {
       "name": "android_gki_kernel_5.15_common",
-      "repo": "https://github.com/hfdem/android_gki_kernel_5.15_common",
-      "branch": "android13-5.15-2025-01",
+      "repo": "https://github.com/liqidecg/kernel_samsung_sm8550-commom",
+      "branch": "KernelSU-Next",
       "device": "gki",
       "defconfig": "gki_defconfig"
     },
