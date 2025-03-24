@@ -1,9 +1,9 @@
 [
   {
     "kernelSource": {
-      "name": "android_kernel_qcom_sm8550",
-      "repo": "https://github.com/LineageOS/android_kernel_qcom_sm8550",
-      "branch": "lineage-21",
+      "name": "android_kernel_xiaomi_sm8550",
+      "repo": "https://github.com/rifux/android_kernel_xiaomi_sm8550",
+      "branch": "fourteen",
       "device": "gki",
       "defconfig": "gki_defconfig"
     },
