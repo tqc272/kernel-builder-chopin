@@ -252,7 +252,7 @@ jobs:
         run: |
           # Clone repositories using the branch names
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "${{ env.SFS_BRANCH }}"
-          git clone https://github.com/liqideqq/kernel_patches.git
+          git clone https://github.com/WildPlusKernel/kernel_patches.git
 
           # Copy SUSFS patches
           cd ${{ env.KERNEL_NAME }}
@@ -264,13 +264,9 @@ jobs:
           # Apply New Hooks Patches
           cp ../kernel_patches/hooks/new_hooks.patch ./
           patch -p1 -F 3 < new_hooks.patch
-          # Apply lz4k&lz4kd Patches
-          cp ../kernel_patches/hooks/lz4kd.patch ./
-          patch -p1 -F 3 < lz4kd.patch
           # Apply Hide Stuff Patches
           cp ../kernel_patches/69_hide_stuff.patch ./
           patch -p1 -F 3 < 69_hide_stuff.patch
-
 
           # Add SUSFS configuration settings
           echo "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
