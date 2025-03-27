@@ -265,8 +265,8 @@ jobs:
           cp ../kernel_patches/hooks/new_hooks.patch ./
           patch -p1 -F 3 < new_hooks.patch
           # Apply lz4k&lz4kd Patches
-          cp ../kernel_patches/hooks/lz4k&lz4kd.patch ./
-          patch -p1 -F 3 < lz4k&lz4kd.patch
+          cp ../kernel_patches/hooks/lz4kd.patch ./
+          patch -p1 -F 3 < lz4kd.patch
           # Apply Hide Stuff Patches
           cp ../kernel_patches/69_hide_stuff.patch ./
           patch -p1 -F 3 < 69_hide_stuff.patch
